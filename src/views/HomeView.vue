@@ -1,18 +1,15 @@
 <template>
-  <div>
-<Search @searchValue="getInfo" />
-<InfoCard :ipData="ipData" />
+  <div class="relative">
+<Header @searchValue="getInfo" :ipData="ipData"/>
   </div>
 </template>
 
 <script>
-import Search from '../components/Search.vue';
-import InfoCard from '../components/InfoCard.vue';
+import Header from '../components/Header.vue';
 
 export default {
   components: {
-    Search,
-    InfoCard
+    Header
   },
   data () {
     return {
