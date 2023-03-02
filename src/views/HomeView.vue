@@ -1,15 +1,18 @@
 <template>
   <div class="relative">
 <Header @searchValue="getInfo" :ipData="ipData"/>
+<Map /> 
   </div>
 </template>
 
 <script>
 import Header from '../components/Header.vue';
+import Map from '../components/Map.vue'
 
 export default {
   components: {
-    Header
+    Header,
+    Map
   },
   data () {
     return {
