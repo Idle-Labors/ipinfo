@@ -1,6 +1,5 @@
 <template>
-  <div class="z-0" id="map">
-  </div>
+  <div class="z-0" id="map"></div>
 </template>
 
 <script>
@@ -13,8 +12,7 @@ export default {
   mounted() {
     this.map = L.map('map').setView([51.505, -0.09], 13)
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    }).addTo(this.map)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(this.map)
     L.marker([51.5, -0.09]).addTo(this.map)
   },
   watch: {
@@ -32,12 +30,12 @@ export default {
       this.map.panTo(new L.LatLng(lat, long))
       L.marker([lat, long]).addTo(this.map)
     }
-  },
+  }
 }
 </script>
 
 <style>
 #map {
-height: 1024px;
+  height: 1024px;
 }
 </style>

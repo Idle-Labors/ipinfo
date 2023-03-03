@@ -78,7 +78,7 @@
 <script>
 export default {
   props: {
-    ipData: Object,
+    ipData: Object
   },
   data() {
     return {
