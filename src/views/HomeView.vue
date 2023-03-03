@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
 <Header @searchValue="getInfo" :ipData="ipData"/>
-<Map /> 
+<Map :locationData="locationData" /> 
   </div>
 </template>
 
@@ -16,7 +16,8 @@ export default {
   },
   data () {
     return {
-      ipData: {}
+      ipData: {},
+      locationData: {}
     }
   },
   methods: {
@@ -27,8 +28,8 @@ export default {
           `https://api.ipgeolocation.io/ipgeo?apiKey=${key}&ip=${searchValue}` 
         )
         const data = await reqData.json()
-        console.log(data)
         this.ipData = data
+        this.locationData = {lat: data.latitude, long: data.longitude}
       } catch (error) {
         console.log('No bueno')
       }

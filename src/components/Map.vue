@@ -1,27 +1,43 @@
 <template>
-  <div class="z-0" id="map"></div>
+  <div class="z-0" id="map">
+  </div>
 </template>
 
 <script>
 import L from 'leaflet'
 
 export default {
+  props: {
+    locationData: Object
+  },
   mounted() {
-    const map = L.map('map').setView([51.505, -0.09], 13)
+    this.map = L.map('map').setView([51.505, -0.09], 13)
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    }).addTo(map)
-    L.marker([51.5, -0.09]).addTo(map)
+    }).addTo(this.map)
+    L.marker([51.5, -0.09]).addTo(this.map)
   },
-
+  watch: {
+    locationData: function (newLocation, oldLocation) {
+      this.centerMap(newLocation.lat, newLocation.long)
+    }
+  },
   data() {
-    return {}
-  }
+    return {
+      map: null
+    }
+  },
+  methods: {
+    centerMap(lat, long) {
+      this.map.panTo(new L.LatLng(lat, long))
+      L.marker([lat, long]).addTo(this.map)
+    }
+  },
 }
 </script>
 
 <style>
 #map {
-  height: 400px;
+height: 1024px;
 }
 </style>
