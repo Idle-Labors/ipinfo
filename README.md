@@ -5,6 +5,5 @@ A simple application which takes an IP address and returns some WHOIS informatio
 
 - Vue
 - Tailwind
-- HTML 5
 - leaflet.js
 - IP Geolocaiton API
