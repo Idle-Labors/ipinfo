@@ -24,7 +24,7 @@ export default {
     async getInfo(searchValue) {
       try {
         //in a production application this key would be obscured in an env variable
-        const key = '32ea1612c7364de2ad4e31a2d1cdcca9'
+        const key = '13ed460d5a9b406e86acb630501372f1'
         const reqData = await fetch(
           `https://api.ipgeolocation.io/ipgeo?apiKey=${key}&ip=${searchValue}`
         )
