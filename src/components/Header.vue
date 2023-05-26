@@ -28,12 +28,12 @@
       >
         <div class="flex-col">
           <p class="font-semibold">IP Address</p>
-          <p>{{ this.ipData.ip }}</p>
+          <p>{{ truncateIPAddress }}</p>
         </div>
         <div class="flex-col">
           <p class="font-semibold">Organization</p>
           <p>
-            {{ this.ipData.organization }}
+            {{ truncateOrgAddress }}
           </p>
         </div>
 
@@ -86,6 +86,30 @@ export default {
       hasSearched: false
     }
   },
+  computed: {
+    truncateIPAddress() {
+      const ipAddress = this.ipData.ip
+      const maxLength = 16
+      
+      if (ipAddress.length > maxLength) {
+        return ipAddress.substring(0, 15) + '...';
+      }
+      
+      return ipAddress;
+    },
+    truncateOrgAddress() {
+      const orgName = this.ipData.organization
+      const ipAddress = this.ipData.ip
+      const maxLength = 27
+      
+      if (orgName.length > maxLength && ipAddress.length > 16) {
+        return orgName.substring(0, maxLength) + '...';
+      }
+      
+      return orgName;
+    }
+  },
+  
   methods: {
     getInfo() {
       this.$emit('searchValue', this.searchValue)
