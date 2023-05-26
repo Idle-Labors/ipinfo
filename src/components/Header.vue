@@ -92,7 +92,7 @@ export default {
       const maxLength = 16
       
       if (ipAddress.length > maxLength) {
-        return ipAddress.substring(0, 15) + '...';
+        return ipAddress.substring(0, 13) + '...';
       }
       
       return ipAddress;
